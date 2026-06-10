@@ -1,0 +1,14 @@
+print("Digite seu salário:")
+salario = float(input())
+
+print("Digite a taxa (%):")
+taxa = float(input())
+
+imposto = salario * (taxa / 100)
+salariofinal = salario - imposto
+
+print("RESULTADO")
+print("Salário: R$ " + str(salario))
+print("Taxa: " + str(taxa) + "%")
+print("Valor do imposto: R$ " + str(imposto))
+print("Salário final: R$ " + str(salariofinal))
