@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="atividade_faltaterminar"/>
+        <attribute name="authors" value="Aluno"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-06-10 02:17:57 "/>
+        <attribute name="created" value="QWx1bm87RFNOMTIyMTI3MzkwMDsyMDI2LTA2LTEwOyIxMTozMjo1MSAiOzI0MzI="/>
+        <attribute name="edited" value="QWx1bm87RFNOMTIyMTI3MzkwMDsyMDI2LTA2LTEwOyIwMTo1MzoyOCAiOzI7QWx1bm87RFNOMTIyMTI3MzkwMDsyMDI2LTA2LTEwOyIxMTozMjo1MSAiO2F0aXZpZGFkZV9mYWx0YXRlcm1pbmFyLmZwcmc7Nzk5NA=="/>
+        <attribute name="edited" value="QWx1bm87RFNOMTIyMTI3MzkwMDsyMDI2LTA2LTEwOyIwMjoxNzo1NyAiOzM7MjU1MQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="contador" type="Integer" array="False" size=""/>
+            <declare name="peso" type="Real" array="False" size=""/>
+            <declare name="taxa" type="Real" array="False" size=""/>
+            <declare name="valor" type="Real" array="False" size=""/>
+            <declare name="valorfinal" type="Real" array="False" size=""/>
+            <declare name="faturamento" type="Real" array="False" size=""/>
+            <declare name="ticketmedio" type="Real" array="False" size=""/>
+            <declare name="internacional" type="String" array="False" size=""/>
+            <declare name="leve" type="Integer" array="False" size=""/>
+            <declare name="padrao" type="Integer" array="False" size=""/>
+            <declare name="pesado" type="Integer" array="False" size=""/>
+            <declare name="internacionais" type="Integer" array="False" size=""/>
+            <declare name="nacional" type="Integer" array="False" size=""/>
+            <assign variable="faturamento" expression="0"/>
+            <assign variable="ticketmedio" expression="0"/>
+            <assign variable="leve" expression="0"/>
+            <assign variable="padrao" expression="0"/>
+            <assign variable="pesado" expression="0"/>
+            <assign variable="internacionais" expression="0"/>
+            <assign variable="nacional" expression="0"/>
+            <assign variable="contador" expression="0"/>
+            <while expression="contador &lt;= 9">
+                <assign variable="contador" expression="contador + 1"/>
+                <output expression="&quot;-------------&quot;" newline="True"/>
+                <output expression="&quot;pacote n:&quot; &amp; contador" newline="True"/>
+                <output expression="&quot;Digite o peso do pacote&quot;" newline="True"/>
+                <input variable="peso"/>
+                <output expression="&quot;O frete &#233; internacional? sim/n&#227;o&quot;" newline="True"/>
+                <input variable="internacional"/>
+                <if expression="peso &lt;= 2">
+                    <then>
+                        <assign variable="valor" expression="10"/>
+                        <assign variable="leve" expression="leve + 1"/>
+                        <output expression="&quot;peso leve&quot;" newline="True"/>
+                        <output expression="&quot;taxa base R$10&quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <if expression="peso &gt; 2 and peso &lt;= 10">
+                            <then>
+                                <assign variable="valor" expression="20"/>
+                                <assign variable="padrao" expression="padrao + 1"/>
+                                <output expression="&quot;peso: padrao&quot;" newline="True"/>
+                            </then>
+                            <else>
+                                <assign variable="valor" expression="30"/>
+                                <assign variable="pesado" expression="pesado + 1"/>
+                                <output expression="&quot;peso: pesado&quot;" newline="True"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <if expression="internacional == &quot;sim&quot;">
+                    <then>
+                        <assign variable="taxa" expression="1.20"/>
+                        <assign variable="internacionais" expression="internacionais + 1"/>
+                        <output expression="&quot;acrescimo internacional: 20%&quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <assign variable="taxa" expression="0"/>
+                        <assign variable="nacional" expression="nacional + 1"/>
+                        <output expression="&quot;sem acrescimo internacional&quot;" newline="True"/>
+                    </else>
+                </if>
+                <assign variable="valorfinal" expression="valor + (valor * taxa)"/>
+                <assign variable="faturamento" expression="faturamento + valorfinal"/>
+                <assign variable="valorfinal" expression="valorfinal + valor"/>
+                <output expression="&quot;valor total acumulado: &quot; &amp; valorfinal" newline="True"/>
+            </while>
+            <assign variable="ticketmedio" expression="faturamento / 10"/>
+            <output expression="&quot;---------------&quot;" newline="True"/>
+            <output expression="&quot;RELATORIO FINAL&quot;" newline="True"/>
+            <output expression="&quot;--------------&quot;" newline="True"/>
+            <output expression="&quot;pacotes processados: 10&quot;" newline="True"/>
+            <output expression="&quot;pacotes leves:&quot; &amp; padrao" newline="True"/>
+            <output expression="&quot;pacotes padrao:&quot; &amp; padrao" newline="True"/>
+            <output expression="&quot;pacotes pesados:&quot; &amp; pesado" newline="True"/>
+            <output expression="&quot;--------------&quot;" newline="True"/>
+            <output expression="&quot;frete internacionais:&quot; &amp; internacional" newline="True"/>
+            <output expression="&quot;frete nacional:&quot; &amp; nacional" newline="True"/>
+            <output expression="&quot;--------------&quot;" newline="True"/>
+            <output expression="&quot;faturamento total: R$ &quot; &amp; faturamento" newline="True"/>
+            <output expression="&quot;ticket medio por pacote:&quot; &amp; ticketmedio" newline="True"/>
+            <output expression="&quot;--------------&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
